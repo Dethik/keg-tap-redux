@@ -8,7 +8,7 @@ function ReusableForm(props) {
         <input
           type='text'
           name='name'
-          placeholder='Pair Names' />
+          placeholder='Name of the Brew' />
         <input
           type='text'
           name='brand'
