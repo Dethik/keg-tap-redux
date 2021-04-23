@@ -24,3 +24,5 @@ Keg.propTypes = {
 };
 
 export default Keg;
+
+// 124 pints per keg, if 10 or less notify ALMOST EMPTY, if 0 replace buy a pint with RESTOCK button to return to 124 pints.
