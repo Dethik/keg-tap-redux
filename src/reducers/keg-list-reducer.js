@@ -1,5 +1,5 @@
 export default (state = {}, action) => {
-    const {  } = action;
+    const { name, brand, price, alcoholContent, pints, id } = action;
     switch (action.type) {
         case 'ADD_KEG':
             return Object.assign({}, state, {
