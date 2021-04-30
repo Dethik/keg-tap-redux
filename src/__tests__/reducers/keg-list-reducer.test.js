@@ -55,4 +55,39 @@ describe('kegListReducer', () => {
       }
     });
   });
+
+  test('Should successfully edit keg data on masterKegList', () => {
+    const { name, brand, price, alcoholContent, pints, id } = kegData;
+    action = {
+      type: 'ADD_KEG',
+      name: name,
+      brand: brand,
+      price: price,
+      alcoholContent: alcoholContent,
+      pints: pints,
+      id: id,
+    };
+
+    updateAction = {
+      type: 'ADD_KEG',
+      name: 'Tiger Eye Lager',
+      brand: brand,
+      price: price,
+      alcoholContent: alcoholContent,
+      pints: pints,
+      id: id,
+    };
+
+    const newKeg = kegListReducer({}, action);
+    expect(kegListReducer(newKeg, updateAction)).toEqual({
+      [id] : {
+        name: 'Tiger Eye Lager',
+        brand: brand,
+        price: price,
+        alcoholContent: alcoholContent,
+        pints: pints,
+        id: id,
+      }
+    });
+  });
 })
