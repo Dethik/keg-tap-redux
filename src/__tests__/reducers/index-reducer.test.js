@@ -22,5 +22,17 @@ describe("rootReducer", () => {
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
   });
 
-  
+  test('Check that ADD_KEG action works for kegListReducer and root reducer', () => {
+    const action = {
+      type: 'ADD_KEG',
+      name: 'Blackout Stout',
+      brand: 'Bardins Brews',
+      price: '12.75',
+      alcoholContent: '18.76%',
+      pints: 20,
+      id: 1,
+    }
+    store.dispatch(action);
+    expect(store.getState().masterKegList).toEqual(kegListReducer(undefined, action));
+  });
 });
