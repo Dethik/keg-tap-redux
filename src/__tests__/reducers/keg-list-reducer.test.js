@@ -90,4 +90,20 @@ describe('kegListReducer', () => {
       }
     });
   });
+
+  test('Should successfully delete a keg', () => {
+    action = {
+      type: 'DELETE_KEG',
+      id: 1
+    };
+    expect(kegListReducer(currentState, action)).toEqual({
+      2: {
+        name: 'Tiger Eye Lager',
+        brand: 'Bardins Brews',
+        price: '8.25',
+        alcoholContent: '8.72%',
+        pints: 20,
+        id: 2}
+    });
+  });
 })
