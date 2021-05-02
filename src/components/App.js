@@ -1,7 +1,7 @@
 import React from 'react';
+import { MDBContainer, MDBCol } from 'mdbreact';
 import Header from './Header';
 import KegControl from './KegControl';
-import { MDBContainer, MDBCol } from 'mdbreact';
 import './../styles/App.css'
 
 function App() {
@@ -9,9 +9,7 @@ function App() {
     <>
       <Header />
       <MDBContainer>
-        <MDBCol>
-          <KegControl />
-        </MDBCol>
+        <MDBCol><KegControl /></MDBCol>
       </MDBContainer>
     </>
   );

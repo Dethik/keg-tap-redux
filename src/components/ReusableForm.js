@@ -14,7 +14,7 @@ function ReusableForm(props) {
           name='brand'
           placeholder='Brand' />
         <input
-          type='number'
+          type='float'
           name='price'
           placeholder='Price 00.00' />
         <input
