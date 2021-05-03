@@ -10,7 +10,7 @@ class KegControl extends React.Component {
 
 
   handleClick = () => {
-    if (this.isNotEmpty(this.props.selectedKeg)) {
+    if (this.props.selectedKeg.name !== undefined) {
       const { dispatch } = this.props;
       const action = a.unselectKeg()
       dispatch(action)
@@ -50,7 +50,7 @@ class KegControl extends React.Component {
   handleChangingSelectedKeg = (id) => {
     const keg = this.props.masterKegList[id];
     const { dispatch } = this.props;
-    const action = a.selectKeg(keg);
+    const action = a.selectedKeg(keg);
     dispatch(action);
   }
 
@@ -63,40 +63,33 @@ class KegControl extends React.Component {
   }
 
   handleRestockingKeg = (id) => {
-    const chosenKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
-    if (chosenKeg) {
-      const refilledPints = (parseInt(chosenKeg.pints) + 124);
-      chosenKeg.pints = refilledPints
-      this.setState({selectedKeg: chosenKeg})
-    }
+    const { dispatch } = this.props;
+    const action = a.restockKeg(id);
+    dispatch(action);
   }
 
-  handleBuyingKeg = (id) => {
-    const chosenKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
-    if (chosenKeg) {
-      const purchasedPints = (parseInt(chosenKeg.pints) - 1);
-      chosenKeg.pints = purchasedPints
-      this.setState({selectedKeg: chosenKeg})
-    }
+  handleBuyingPint = (id) => {
+    const { dispatch } = this.props;
+    const action = a.buyPint(id);
+    dispatch(action);
   }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.props.selectedKeg != null) {
-      currentlyVisibleState =
-      <KegDetail
-        keg={this.props.selectedKeg}
+    if (this.props.selectedKeg.name !== undefined) {
+      const displayedKeg = this.props.selectedKeg.id
+      currentlyVisibleState = <KegDetail keg={this.props.masterKegList[displayedKeg]}
         onClickingDelete={this.handleDeletingKeg}
-        onClickingEdit={this.handleEditClick}
-        onClickingBuy={this.handleBuyingKeg}
+        onClickingBuy={this.handleBuyingPint}
         onClickingRestock={this.handleRestockingKeg} />
-      buttonText = "Return to Keg List"
+        buttonText = "Return to Keg List"
     } else if (this.props.formVisibleOnPage) {
-      currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList}/>
+      currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList}/>;
       buttonText = "Return to Keg List"
     } else {
-      currentlyVisibleState = <KegList kegList={this.props.masterKegList}
+      currentlyVisibleState = <KegList
+      kegList={this.props.masterKegList}
       onKegSelection={this.handleChangingSelectedKeg} />
       buttonText = "Add Keg"
     }

@@ -14,7 +14,7 @@ function KegDetail(props) {
         <p><strong>${keg.price}</strong></p>
         <p> Alcohol Content: {keg.alcoholContent}</p>
         { keg.pints > 0 &&
-          <p>{keg.pints} Remain in this keg</p>
+          <p><strong>{keg.pints}</strong> pints Remain in this keg</p>
         }
         { keg.pints > 0 &&
           <button onClick={ ()=> onClickingBuy(keg.id) }>Buy</button>
