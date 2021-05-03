@@ -7,7 +7,7 @@
 
 
 #### Date created: 04/21/2021
-#### Last updated: 04/30/2021
+#### Last updated: 05/02/2021
 ---
 
 ## Technologies Used
@@ -23,7 +23,7 @@
 
 ## Description
 
-
+An application for a Tap Room to add, update, and remove different wonderful brews from their menu. As well as restock and sell pint by pint.
 
 ---
 
